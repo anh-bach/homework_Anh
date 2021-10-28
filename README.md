@@ -59,7 +59,7 @@ POST:
 
 Requirement: Make a simple user list with usernames as sidebar and user infomation as card.
 
-Technologies used: `React and CSS3`.
+Technologies used: `React, axios and CSS3`. This simple app is done by using React, axios and CSS3. It's tested with React testing library and also responsive.
 
 ### Screenshot
 
