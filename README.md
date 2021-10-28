@@ -84,3 +84,6 @@ Requirement: A simple greeter web component with custom Element.
 This simple app is deployed on GitHub.
 
 Please check it out at: [https://iamanh1990.github.io/customElement-Symanalytics/]
+
+Thank you for your time.
+Anh
