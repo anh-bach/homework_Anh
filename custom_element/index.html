@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <greeter-elem></greeter-elem>
+    <greeter-elem name="John"></greeter-elem>
+    <greeter-elem name="Jane"></greeter-elem>
+    <script>
+      class Greeter extends HTMLElement {
+        constructor() {
+          super();
+          this.attachShadow({ mode: 'open' }).innerHTML =
+            '<div id="content"></div>';
+          this.name = 'Doe';
+        }
+
+        static get observedAttributes() {
+          //step 1: observe the attr name of this custom element
+          return ['name'];
+        }
+
+        connectedCallback() {
+          this.update();
+        }
+
+        attributeChangedCallback(attrName, old, newVal) {
+          //step3: the newly added name attr will trigger the attributeChangedCallback
+          // add Hello + name attr to the content of the div#content
+
+          this.shadowRoot.firstChild.textContent = `Hello, ${this.getAttribute(
+            'name'
+          )}`;
+        }
+
+        update() {
+          //step2: the update function gets called when the customElement connected to the DOM.
+          // check to see if is has name attr, if no, add name attr with the value of this.name;
+          if (!this.hasAttribute('name')) {
+            this.setAttribute('name', this.name);
+          }
+        }
+      }
+
+      customElements.define('greeter-elem', Greeter);
+    </script>
+  </body>
+</html>
